@@ -1,0 +1,667 @@
+{
+  "eval_meta": {
+    "total_messages": 20,
+    "languages": [
+      "hi-IN",
+      "gu-IN",
+      "mr-IN"
+    ],
+    "intents_tested": [
+      "I-01",
+      "I-02",
+      "I-03",
+      "I-04",
+      "I-05",
+      "I-06",
+      "I-07",
+      "I-08",
+      "I-09"
+    ],
+    "models_used": {
+      "asr": "saarika:v2.5",
+      "tts": "bulbul:v2",
+      "llm": "sarvam-m"
+    }
+  },
+  "results": [
+    {
+      "id": "H-01",
+      "language": "hi-IN",
+      "script": "hinglish_roman",
+      "expected_intent": "I-02",
+      "expected_label": "New Enquiry",
+      "original_text": "Bhai, M12 anchor bolts chahiye, 500 pcs, rate batao?",
+      "notes": "Core Hinglish. Product code M12 is critical -- must survive ASR.",
+      "asr_transcript": "ओआईई 12 एंकर बोल्ट्स चाहे ₹500 रेट बेटर।",
+      "asr_wer": 1.0,
+      "text_classification": {
+        "intent": "I-02",
+        "confidence": "high",
+        "reasoning": "Known contact inquiring about product (M12 anchor bolts) and price for a specific quantity (500 pcs), fitting I-02 criteria of product/price enquiry."
+      },
+      "asr_classification": {
+        "intent": "I-02",
+        "confidence": "high",
+        "reasoning": "Known contact inquiring about product (12 anchor bolts) and explicitly asking for a better price (₹500 rate), which qualifies as a price-related enquiry."
+      },
+      "text_correct": true,
+      "asr_correct": true,
+      "failure_modes": [
+        "HIGH_WER: 1.0",
+        "PRODUCT_CODE_LOSS: product code dropped or distorted in ASR"
+      ]
+    },
+    {
+      "id": "H-02",
+      "language": "hi-IN",
+      "script": "hinglish_roman",
+      "expected_intent": "I-06",
+      "expected_label": "Payment Update",
+      "original_text": "Kal payment kar deta hoon, 15000 ka hai na?",
+      "notes": "Payment commitment with amount. Intent relies on 'payment kar deta hoon'.",
+      "asr_transcript": "ये ऑल पेमेंट कार्ड डेटा हुन 15000 का है ना?",
+      "asr_wer": 0.89,
+      "text_classification": {
+        "intent": "I-06",
+        "confidence": "high",
+        "reasoning": "The message explicitly mentions payment amount and timeline (Kal payment kar deta hoon, 15000 ka hai na?), indicating a payment commitment update."
+      },
+      "asr_classification": {
+        "intent": "I-06",
+        "confidence": "high",
+        "reasoning": "The message explicitly asks for confirmation of payment card data and amount (15000), directly relating to payment status or commitment timeline."
+      },
+      "text_correct": true,
+      "asr_correct": true,
+      "failure_modes": [
+        "HIGH_WER: 0.89"
+      ]
+    },
+    {
+      "id": "H-03",
+      "language": "hi-IN",
+      "script": "hinglish_roman",
+      "expected_intent": "I-07",
+      "expected_label": "Delivery Follow-up",
+      "original_text": "Order kab tak aayega? Ek hafte se wait kar raha hoon.",
+      "notes": "Delivery inquiry. Mild frustration tone -- should not be classified as Complaint.",
+      "asr_transcript": "ओडर कब टेकेगा? एक हफ्ते से वेट कर रहा हूं।",
+      "asr_wer": 1.0,
+      "text_classification": {
+        "intent": "I-07",
+        "confidence": "high",
+        "reasoning": "The message asks about delivery timing and mentions waiting for a week, indicating a follow-up on order status without explicit dissatisfaction, fitting I-07."
+      },
+      "asr_classification": {
+        "intent": "I-07",
+        "confidence": "high",
+        "reasoning": "The message asks about the order delivery timeline with a mild urgency (waiting for a week), which is a clear delivery follow-up without explicit dissatisfaction, fitting I-07."
+      },
+      "text_correct": true,
+      "asr_correct": true,
+      "failure_modes": [
+        "HIGH_WER: 1.0"
+      ]
+    },
+    {
+      "id": "H-04",
+      "language": "hi-IN",
+      "script": "hinglish_roman",
+      "expected_intent": "I-08",
+      "expected_label": "Complaint",
+      "original_text": "Bhai, jo pipe fittings aaye the, unme se 20 defective nikle. Kya karein?",
+      "notes": "Clear complaint with quantity of defective items.",
+      "asr_transcript": "वही जो पाइप फिटिंग से है ये अन्य से 20 डिफेक्टिव नहीं कल। लईया करेन।",
+      "asr_wer": 0.92,
+      "text_classification": {
+        "intent": "I-08",
+        "confidence": "high",
+        "reasoning": "The message explicitly reports a problem (20 defective pipe fittings) with an existing order, indicating dissatisfaction and requiring resolution."
+      },
+      "asr_classification": {
+        "intent": "I-08",
+        "confidence": "high",
+        "reasoning": "The message explicitly mentions defective products ('20 डिफेक्टिव') and signals dissatisfaction, qualifying as a complaint about an existing order."
+      },
+      "text_correct": true,
+      "asr_correct": true,
+      "failure_modes": [
+        "HIGH_WER: 0.92"
+      ]
+    },
+    {
+      "id": "H-05",
+      "language": "hi-IN",
+      "script": "devanagari",
+      "expected_intent": "I-02",
+      "expected_label": "New Enquiry",
+      "original_text": "भाई, GI पाइप 2 इंच वाले 200 पीस चाहिए, क्या रेट है?",
+      "notes": "Pure Devanagari. Tests if ASR handles typed regional script.",
+      "asr_transcript": "भाई वे पाइप 2 इंच वाले 200 पीस चाहिए, क्या रेट है?",
+      "asr_wer": 0.17,
+      "text_classification": {
+        "intent": "I-02",
+        "confidence": "high",
+        "reasoning": "Known contact inquiring about price for a specific product (GI pipes) with quantity, indicating a new enquiry."
+      },
+      "asr_classification": {
+        "intent": "I-02",
+        "confidence": "high",
+        "reasoning": "Known contact inquiring about price (rate) for a specific product (2-inch pipes, 200 pieces), which constitutes a new enquiry."
+      },
+      "text_correct": true,
+      "asr_correct": true,
+      "failure_modes": [
+        "PRODUCT_CODE_LOSS: product code dropped or distorted in ASR"
+      ]
+    },
+    {
+      "id": "H-06",
+      "language": "hi-IN",
+      "script": "hinglish_roman",
+      "expected_intent": "I-05",
+      "expected_label": "Order Confirmation",
+      "original_text": "Ha bhai confirm hai, 1000 pcs ka order de do. PO kal bhejta hoon.",
+      "notes": "High-stakes intent. 'Confirm' + 'PO' are key signals.",
+      "asr_transcript": "हाँ, बाय कन्फर्म है, 1000 कोमिका ऑर्डर डिड हो, वो काल बचता हूँ।",
+      "asr_wer": 0.93,
+      "text_classification": {
+        "intent": "I-05",
+        "confidence": "high",
+        "reasoning": "Message confirms order quantity (1000 pcs) and mentions sending a purchase order (PO) tomorrow, indicating intent to proceed with the order."
+      },
+      "asr_classification": {
+        "intent": "I-05",
+        "confidence": "high",
+        "reasoning": "The message confirms order completion ('1000 komika order did ho') and specifies delivery timing ('vo kal bachta hun'), indicating a clear intent to proceed with the order."
+      },
+      "text_correct": true,
+      "asr_correct": true,
+      "failure_modes": [
+        "HIGH_WER: 0.93"
+      ]
+    },
+    {
+      "id": "H-07",
+      "language": "hi-IN",
+      "script": "hinglish_roman",
+      "expected_intent": "I-04",
+      "expected_label": "Price Negotiation",
+      "original_text": "Bhai 10000 mein nahi hoga kya? Thoda adjust karo.",
+      "notes": "Negotiation without explicit product mention. Needs open deal context.",
+      "asr_transcript": "वह ₹1000 में नहीं होगा क्या? थोड़ा एडजस्ट करो।",
+      "asr_wer": 1.0,
+      "text_classification": {
+        "intent": "I-04",
+        "confidence": "high",
+        "reasoning": "Known contact discussing price adjustment on an existing deal (conditional confirmation with discount request)."
+      },
+      "asr_classification": {
+        "intent": "I-04",
+        "confidence": "high",
+        "reasoning": "Known contact discussing price adjustment on an existing deal (₹1000) with a request for negotiation ('एडजस्ट करो')."
+      },
+      "text_correct": true,
+      "asr_correct": true,
+      "failure_modes": [
+        "HIGH_WER: 1.0"
+      ]
+    },
+    {
+      "id": "H-08",
+      "language": "hi-IN",
+      "script": "hinglish_roman",
+      "expected_intent": "I-09",
+      "expected_label": "Out of Scope",
+      "original_text": "Haan haan, sab theek hai. Aaj raat free hoon kya?",
+      "notes": "Personal message. No commercial intent. Must not trigger CRM action.",
+      "asr_transcript": "फैन हन सब दिखाए, वाज रेड फ्री हुन कहिया।",
+      "asr_wer": 1.0,
+      "text_classification": {
+        "intent": "I-09",
+        "confidence": "high",
+        "reasoning": "The message is a personal check-in with no commercial content, fitting the 'Out of Scope' category as per the single-word greeting rule."
+      },
+      "asr_classification": {
+        "intent": "I-02",
+        "confidence": "high",
+        "reasoning": "Known contact inquiring about product availability and pricing ('show all fans', 'when will red watch be free') without explicit dissatisfaction or reference to existing deals."
+      },
+      "text_correct": true,
+      "asr_correct": false,
+      "failure_modes": [
+        "HIGH_WER: 1.0",
+        "ASR_DEGRADATION: text correct but ASR wrong (I-02)"
+      ]
+    },
+    {
+      "id": "G-01",
+      "language": "gu-IN",
+      "script": "gujarati",
+      "expected_intent": "I-02",
+      "expected_label": "New Enquiry",
+      "original_text": "ભાઈ, M16 બોલ્ટ 300 નંગ જોઈએ છે, ભાવ શું છે?",
+      "notes": "Pure Gujarati script. Product code M16 critical. 'નંગ' = pieces.",
+      "asr_transcript": "ભાઈ એ 16 બોલ્ટ 300 નંગ જોઈએ છે, ભાવ શું છે?",
+      "asr_wer": 0.2,
+      "text_classification": {
+        "intent": "I-02",
+        "confidence": "high",
+        "reasoning": "Known contact inquiring about product (M16 bolt) price for 300 units, which is a direct product/price enquiry."
+      },
+      "asr_classification": {
+        "intent": "I-02",
+        "confidence": "high",
+        "reasoning": "Known contact inquiring about price for a specific product (16 bolts 300 ng), which is a direct product/price enquiry without signaling a new opportunity or negotiation context."
+      },
+      "text_correct": true,
+      "asr_correct": true,
+      "failure_modes": [
+        "PRODUCT_CODE_LOSS: product code dropped or distorted in ASR"
+      ]
+    },
+    {
+      "id": "G-02",
+      "language": "gu-IN",
+      "script": "gujarati_roman",
+      "expected_intent": "I-06",
+      "expected_label": "Payment Update",
+      "original_text": "Bhai, kal payment mokli dau chhu, 22000 nu che.",
+      "notes": "Gujarati-Roman mix. 'Mokli dau' = will send. Amount embedded.",
+      "asr_transcript": "ઓહ હાઇ કાલ પેમેન્ટ મોકલી દઉં છું ૨૨૦૦૦ નું છે.",
+      "asr_wer": 1.0,
+      "text_classification": {
+        "intent": "I-06",
+        "confidence": "high",
+        "reasoning": "The message explicitly mentions payment amount (22000) and timeline (kal - tomorrow), indicating a payment commitment update from a known contact."
+      },
+      "asr_classification": {
+        "intent": "I-06",
+        "confidence": "high",
+        "reasoning": "Message explicitly mentions payment amount (22000) and timeline (tomorrow), directly indicating a payment commitment update."
+      },
+      "text_correct": true,
+      "asr_correct": true,
+      "failure_modes": [
+        "HIGH_WER: 1.0"
+      ]
+    },
+    {
+      "id": "G-03",
+      "language": "gu-IN",
+      "script": "gujarati",
+      "expected_intent": "I-07",
+      "expected_label": "Delivery Follow-up",
+      "original_text": "ઓર્ડર ક્યારે આવશે? ૧૦ દિવસ થઈ ગયા.",
+      "notes": "Gujarati numerals (૧૦ = 10). Tests numeral handling in ASR.",
+      "asr_transcript": "ઓર્ડર ક્યારે આવશે? દિવસ થઈ ગયા.",
+      "asr_wer": 0.14,
+      "text_classification": {
+        "intent": "I-07",
+        "confidence": "high",
+        "reasoning": "The message asks about order arrival time after 10 days, which is a delivery status inquiry without explicit dissatisfaction, fitting I-07."
+      },
+      "asr_classification": {
+        "intent": "I-07",
+        "confidence": "high",
+        "reasoning": "The message asks about order arrival timing and mentions days have passed, indicating a delivery status inquiry without explicit dissatisfaction, fitting I-07."
+      },
+      "text_correct": true,
+      "asr_correct": true,
+      "failure_modes": []
+    },
+    {
+      "id": "G-04",
+      "language": "gu-IN",
+      "script": "gujarati_roman",
+      "expected_intent": "I-05",
+      "expected_label": "Order Confirmation",
+      "original_text": "Ha confirm che, 500 piece no order apo. PO moku chu.",
+      "notes": "Gujarati-Roman. 'Moku chu' = will send. Mixed confirmation signal.",
+      "asr_transcript": "ચા કન્ફર્મ છે ફાઇવ હન્ડ્રેડ પીસનો ઓર્ડર આપો ઓ મોકુચ્યુ",
+      "asr_wer": 1.0,
+      "text_classification": {
+        "intent": "I-05",
+        "confidence": "high",
+        "reasoning": "The message confirms order placement ('500 piece no order apo') and mentions sending a purchase order ('PO moku chu'), indicating intent to proceed without conditional negotiation or dissatisfaction."
+      },
+      "asr_classification": {
+        "intent": "I-05",
+        "confidence": "high",
+        "reasoning": "Message confirms order quantity (five hundred pieces) with a direct instruction to proceed ('ઓર્ડર આપો'), indicating intent to place an order without conditional negotiation or complaints."
+      },
+      "text_correct": true,
+      "asr_correct": true,
+      "failure_modes": [
+        "HIGH_WER: 1.0"
+      ]
+    },
+    {
+      "id": "G-05",
+      "language": "gu-IN",
+      "script": "gujarati",
+      "expected_intent": "I-08",
+      "expected_label": "Complaint",
+      "original_text": "ભાઈ, આ pipe fittings માં leakage આવે છે. બધા return કરવા છે.",
+      "notes": "Code-switched: Gujarati + English (leakage, return, pipe fittings).",
+      "asr_transcript": "ભાઈ આ પાઇપ ફિટિંગ્સમાં લીકેજ આવે છે, બધા રીટર્ન કરવા છે.",
+      "asr_wer": 0.55,
+      "text_classification": {
+        "intent": "I-08",
+        "confidence": "high",
+        "reasoning": "The message explicitly mentions a product defect (leakage in pipe fittings) and intent to return, indicating dissatisfaction with an existing order."
+      },
+      "asr_classification": {
+        "intent": "I-08",
+        "confidence": "high",
+        "reasoning": "The message explicitly reports a product issue (leakage in pipe fittings) and indicates dissatisfaction requiring return, fitting I-08's definition of a complaint about an existing order."
+      },
+      "text_correct": true,
+      "asr_correct": true,
+      "failure_modes": [
+        "HIGH_WER: 0.55"
+      ]
+    },
+    {
+      "id": "M-01",
+      "language": "mr-IN",
+      "script": "marathi_roman",
+      "expected_intent": "I-02",
+      "expected_label": "New Enquiry",
+      "original_text": "Bhai, GI pipe 1 inch wale 500 feet pahije, rate kiti?",
+      "notes": "Marathi-Roman. 'Pahije' = need. 'Kiti' = how much.",
+      "asr_transcript": "वही पाईप वन इंच वाल 500 फीट पाहिजे रेड केटी.",
+      "asr_wer": 0.91,
+      "text_classification": {
+        "intent": "I-02",
+        "confidence": "high",
+        "reasoning": "Known contact inquiring about price (rate) for a specific product (GI pipe), indicating a new enquiry."
+      },
+      "asr_classification": {
+        "intent": "I-02",
+        "confidence": "high",
+        "reasoning": "Known contact specifying product details (1-inch pipe, 500 feet, red color) without explicit negotiation or order confirmation, indicating a product enquiry."
+      },
+      "text_correct": true,
+      "asr_correct": true,
+      "failure_modes": [
+        "HIGH_WER: 0.91",
+        "PRODUCT_CODE_LOSS: product code dropped or distorted in ASR"
+      ]
+    },
+    {
+      "id": "M-02",
+      "language": "mr-IN",
+      "script": "devanagari",
+      "expected_intent": "I-06",
+      "expected_label": "Payment Update",
+      "original_text": "भाऊ, उद्या पेमेंट करतो, ₹18,000 आहे ना?",
+      "notes": "Marathi Devanagari. 'भाऊ' = Bhai (Marathi). Rupee symbol in text.",
+      "asr_transcript": "भाव उद्या पेमेंट करतो. झिरो झिरो झिरो आहे ना?",
+      "asr_wer": 0.43,
+      "text_classification": {
+        "intent": "I-06",
+        "confidence": "high",
+        "reasoning": "Message explicitly mentions payment amount and timeline (₹18,000 tomorrow), indicating a payment commitment update."
+      },
+      "asr_classification": {
+        "intent": "I-06",
+        "confidence": "high",
+        "reasoning": "Message explicitly discusses payment amount (zero) and timeline (tomorrow), directly relating to payment status commitment."
+      },
+      "text_correct": true,
+      "asr_correct": true,
+      "failure_modes": [
+        "HIGH_WER: 0.43"
+      ]
+    },
+    {
+      "id": "M-03",
+      "language": "mr-IN",
+      "script": "marathi_roman",
+      "expected_intent": "I-05",
+      "expected_label": "Order Confirmation",
+      "original_text": "Confirm aahe, 200 piece order dya. PO pathvato.",
+      "notes": "Marathi-Roman. 'Pathvato' = will send. Clear PO signal.",
+      "asr_transcript": "वन फ्राम आय टू हंड्रेड पीस ऑर्डर डॅया ओ पाथ वाटो",
+      "asr_wer": 1.0,
+      "text_classification": {
+        "intent": "I-05",
+        "confidence": "high",
+        "reasoning": "Message confirms order intent with quantity and mentions sending a purchase order, indicating a clear commitment to proceed."
+      },
+      "asr_classification": {
+        "intent": "I-07",
+        "confidence": "high",
+        "reasoning": "The message explicitly asks about sending the path (delivery) for an order, which is a direct delivery follow-up on a known contact's order."
+      },
+      "text_correct": true,
+      "asr_correct": false,
+      "failure_modes": [
+        "HIGH_WER: 1.0",
+        "ASR_DEGRADATION: text correct but ASR wrong (I-07)"
+      ]
+    },
+    {
+      "id": "M-04",
+      "language": "mr-IN",
+      "script": "marathi_roman",
+      "expected_intent": "I-03",
+      "expected_label": "Deal Creation",
+      "original_text": "Bhai, mala aajun ek order dyaycha aahe, vegle product aahe.",
+      "notes": "Tricky: existing customer, NEW deal. 'Vegle product' = different product. Must not be I-02.",
+      "asr_transcript": "वही मला आजून एक ऑर्डर द्यायचे आहे, वेगल प्रोडक्ट आहे.",
+      "asr_wer": 1.0,
+      "text_classification": {
+        "intent": "I-03",
+        "confidence": "high",
+        "reasoning": "Known contact signaling a new order for a different product, distinct from any existing deals."
+      },
+      "asr_classification": {
+        "intent": "I-03",
+        "confidence": "high",
+        "reasoning": "Known contact signaling a new order for a different product, distinct from any existing deals."
+      },
+      "text_correct": true,
+      "asr_correct": true,
+      "failure_modes": [
+        "HIGH_WER: 1.0"
+      ]
+    },
+    {
+      "id": "M-05",
+      "language": "mr-IN",
+      "script": "devanagari",
+      "expected_intent": "I-04",
+      "expected_label": "Price Negotiation",
+      "original_text": "भाऊ, थोडं कमी होईल का? ₹12,000 मध्ये जमेल?",
+      "notes": "Marathi Devanagari. Pure price negotiation, no product mention.",
+      "asr_transcript": "भाव थोडा कमी होईल का? झिरो झिरो झिरो मध्ये जमेल.",
+      "asr_wer": 0.5,
+      "text_classification": {
+        "intent": "I-04",
+        "confidence": "high",
+        "reasoning": "Known contact discussing price adjustment (₹12,000) on what appears to be an active deal/opportunity with a request for reduction."
+      },
+      "asr_classification": {
+        "intent": "I-04",
+        "confidence": "high",
+        "reasoning": "Known contact discussing price reduction (भाव थोडा कमी) for a deal, indicating negotiation on an open opportunity."
+      },
+      "text_correct": true,
+      "asr_correct": true,
+      "failure_modes": [
+        "HIGH_WER: 0.5"
+      ]
+    },
+    {
+      "id": "E-01",
+      "language": "hi-IN",
+      "script": "mixed",
+      "expected_intent": "I-04",
+      "expected_label": "Price Negotiation",
+      "original_text": "Bhai confirmed hai order, lekin 10% discount chahiye tabhi final karunga.",
+      "notes": "Ambiguous: sounds like confirmation but is conditional. Must be I-04 not I-05.",
+      "asr_transcript": "वह है कंफर्म्ड हाई ऑर्डर, लेकिन 10% डिस्काउंट चाहिए टैब ही फाइनल कार रंगा।",
+      "asr_wer": 0.91,
+      "text_classification": {
+        "intent": "I-04",
+        "confidence": "high",
+        "reasoning": "The message includes a conditional confirmation of the order with a clear price negotiation (10% discount request), fitting I-04 as per the rules."
+      },
+      "asr_classification": {
+        "intent": "I-04",
+        "confidence": "high",
+        "reasoning": "The message combines order confirmation with a explicit price negotiation (10% discount request), falling under I-04 as per the conditional confirmation rule."
+      },
+      "text_correct": true,
+      "asr_correct": true,
+      "failure_modes": [
+        "HIGH_WER: 0.91"
+      ]
+    },
+    {
+      "id": "E-02",
+      "language": "hi-IN",
+      "script": "hinglish_roman",
+      "expected_intent": "I-09",
+      "expected_label": "Out of Scope",
+      "original_text": "Namaste",
+      "notes": "Single word greeting. Zero commercial content. Simplest possible out-of-scope.",
+      "asr_transcript": "ये मसाले",
+      "asr_wer": 1.0,
+      "text_classification": {
+        "intent": "I-09",
+        "confidence": "high",
+        "reasoning": "Single word greeting with no commercial content"
+      },
+      "asr_classification": {
+        "intent": "I-09",
+        "confidence": "medium",
+        "reasoning": "The message 'ये मसाले' (These spices) is a single phrase without commercial intent, context, or actionable content, falling under personal/greeting or unclear purpose as per I-09 rules."
+      },
+      "text_correct": true,
+      "asr_correct": true,
+      "failure_modes": [
+        "HIGH_WER: 1.0"
+      ]
+    }
+  ],
+  "failure_summary": [
+    {
+      "id": "H-01",
+      "lang": "hi-IN",
+      "failure": "HIGH_WER: 1.0"
+    },
+    {
+      "id": "H-01",
+      "lang": "hi-IN",
+      "failure": "PRODUCT_CODE_LOSS: product code dropped or distorted in ASR"
+    },
+    {
+      "id": "H-02",
+      "lang": "hi-IN",
+      "failure": "HIGH_WER: 0.89"
+    },
+    {
+      "id": "H-03",
+      "lang": "hi-IN",
+      "failure": "HIGH_WER: 1.0"
+    },
+    {
+      "id": "H-04",
+      "lang": "hi-IN",
+      "failure": "HIGH_WER: 0.92"
+    },
+    {
+      "id": "H-05",
+      "lang": "hi-IN",
+      "failure": "PRODUCT_CODE_LOSS: product code dropped or distorted in ASR"
+    },
+    {
+      "id": "H-06",
+      "lang": "hi-IN",
+      "failure": "HIGH_WER: 0.93"
+    },
+    {
+      "id": "H-07",
+      "lang": "hi-IN",
+      "failure": "HIGH_WER: 1.0"
+    },
+    {
+      "id": "H-08",
+      "lang": "hi-IN",
+      "failure": "HIGH_WER: 1.0"
+    },
+    {
+      "id": "H-08",
+      "lang": "hi-IN",
+      "failure": "ASR_DEGRADATION: text correct but ASR wrong (I-02)"
+    },
+    {
+      "id": "G-01",
+      "lang": "gu-IN",
+      "failure": "PRODUCT_CODE_LOSS: product code dropped or distorted in ASR"
+    },
+    {
+      "id": "G-02",
+      "lang": "gu-IN",
+      "failure": "HIGH_WER: 1.0"
+    },
+    {
+      "id": "G-04",
+      "lang": "gu-IN",
+      "failure": "HIGH_WER: 1.0"
+    },
+    {
+      "id": "G-05",
+      "lang": "gu-IN",
+      "failure": "HIGH_WER: 0.55"
+    },
+    {
+      "id": "M-01",
+      "lang": "mr-IN",
+      "failure": "HIGH_WER: 0.91"
+    },
+    {
+      "id": "M-01",
+      "lang": "mr-IN",
+      "failure": "PRODUCT_CODE_LOSS: product code dropped or distorted in ASR"
+    },
+    {
+      "id": "M-02",
+      "lang": "mr-IN",
+      "failure": "HIGH_WER: 0.43"
+    },
+    {
+      "id": "M-03",
+      "lang": "mr-IN",
+      "failure": "HIGH_WER: 1.0"
+    },
+    {
+      "id": "M-03",
+      "lang": "mr-IN",
+      "failure": "ASR_DEGRADATION: text correct but ASR wrong (I-07)"
+    },
+    {
+      "id": "M-04",
+      "lang": "mr-IN",
+      "failure": "HIGH_WER: 1.0"
+    },
+    {
+      "id": "M-05",
+      "lang": "mr-IN",
+      "failure": "HIGH_WER: 0.5"
+    },
+    {
+      "id": "E-01",
+      "lang": "hi-IN",
+      "failure": "HIGH_WER: 0.91"
+    },
+    {
+      "id": "E-02",
+      "lang": "hi-IN",
+      "failure": "HIGH_WER: 1.0"
+    }
+  ]
+}
